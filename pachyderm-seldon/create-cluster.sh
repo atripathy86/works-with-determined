@@ -1,7 +1,7 @@
 #!/bin/bash
 
-PROJECT="determined-ai"
-NAME="determined-seldon"
+PROJECT="hpe-labs-ai"
+NAME="det-pach-seldon"
 GPU_TYPE="nvidia-tesla-k80"
 GPUS_PER_NODE="4"
 MAX_NODES="4"
@@ -13,6 +13,8 @@ ZONE="us-central1-c"
 BUCKET="checkpoint"
 CLUSTER_NAME="${NAME}-${CLUSTER}"
 BUCKET_NAME="${NAME}-${BUCKET}"
+CLUSTER_VERSION="1.24.5-gke.600"
+
 
 # Create the GKE cluster that will contain only a single non-GPU node.
 
@@ -24,7 +26,7 @@ gcloud container clusters create ${CLUSTER_NAME} \
 	--node-locations ${ZONE} \
 	--num-nodes "1" \
 	--no-enable-basic-auth \
-	--cluster-version "1.21.6-gke.1503" \
+	--cluster-version ${CLUSTER_VERSION} \
 	--release-channel "regular" \
 	--machine-type "n1-standard-16" \
 	--image-type "COS_CONTAINERD" \
@@ -84,3 +86,8 @@ kubectl apply -f https://raw.githubusercontent.com/GoogleCloudPlatform/container
 
 # Create a GCS bucket to store checkpoints.
 gsutil mb gs://${BUCKET_NAME}
+#Create Bucket for Pachyderm data
+gsutil mb -l us-central1 gs://${NAME}-data
+#Create Bucket for Seldon Drift/Outlier Data 
+gsutil mb -l us-central1 gs://${NAME}-detector
+
