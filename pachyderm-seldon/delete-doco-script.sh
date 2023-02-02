@@ -62,10 +62,10 @@ gcloud sql instances delete ${CLOUDSQL_INSTANCE_NAME} -q
 echo "Removing Static IP Name ${STATIC_IP_NAME} in $GCP_REGION"
 gcloud compute addresses delete ${STATIC_IP_NAME} --region=${GCP_REGION} -q
 
-echo "Removing Nodepool: ${NAME}-gpu-node-pool"
-gcloud container node-pools delete ${NAME}-gpu-node-pool \
-  --cluster ${CLUSTER_NAME} \
-  -- zone ${GCP_ZONE}
+#echo "Removing Nodepool: ${NAME}-gpu-node-pool"
+#gcloud container node-pools delete ${NAME}-gpu-node-pool \
+#  --cluster ${CLUSTER_NAME} \
+#  -- zone ${GCP_ZONE}
 
 echo "Deleting cluster : ${CLUSTER_NAME}"
 

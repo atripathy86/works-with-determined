@@ -7,8 +7,8 @@ proxy:
 
 cloudsqlAuthProxy:
   enabled: true
-  connectionName: "hpe-labs-ai:us-central1:det-pach-seldon2-db"
-  serviceAccount: "det-pach-seldon2-sa@hpe-labs-ai.iam.gserviceaccount.com"
+  connectionName: "hpe-labs-ai:us-central1:det-pach-seldon-db"
+  serviceAccount: "det-pach-seldon-sa@hpe-labs-ai.iam.gserviceaccount.com"
   resources:
     requests:
       memory: "500Mi"
@@ -34,7 +34,7 @@ pachd:
   enabled: true
   storage:
     google:
-      bucket: "det-pach-seldon2-checkpoint"
+      bucket: "det-pach-seldon-checkpoint"
   serviceAccount:
     additionalAnnotations:
       iam.gke.io/gcp-service-account: "det-pach-seldon-sa@hpe-labs-ai.iam.gserviceaccount.com"

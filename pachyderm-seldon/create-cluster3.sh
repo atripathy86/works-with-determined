@@ -1,7 +1,7 @@
 #!/bin/bash
 
 PROJECT_ID="hpe-labs-ai"
-NAME="det-pach-seldon2"
+NAME="det-pach-seldon"
 GPU_TYPE="nvidia-tesla-k80"
 GPUS_PER_NODE="4"
 MAX_NODES="4"
